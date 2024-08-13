@@ -1,4 +1,4 @@
-const initialState: UserState = {
+export const initialState: StateType = {
   users: [
     {
       id: 1,
@@ -27,16 +27,20 @@ const initialState: UserState = {
       friends: [1],
     },
   ],
+  auth: {
+    isLoggedIn: false,
+    currentUserId: null,
+  },
 };
 
 const reducer = (
-  state: UserState = initialState,
+  state: StateType = initialState,
   action: UserAction
-): UserState => {
+): StateType => {
   switch (action.type) {
     case 'ADD_USER':
       const newUser: IUser = {
-        id: Math.random(),
+        id: Math.ceil(Math.random() * 1000),
         userName: action.user.userName,
         email: action.user.email,
         profilePicture: '',
@@ -47,24 +51,37 @@ const reducer = (
         ...state,
         users: [...state.users, newUser],
       };
+      case 'LOGIN':
+        if (action.user.userName) {
+          const newState: StateType = {
+            ...state,
+            auth: {
+              isLoggedIn: true,
+              currentUserId: action.user.id,
+            }
+          }
+        } else {
+          console.log(`You have to provide username for login`);
+          return state;
+        }
     case 'REMOVE_USER':
       const updatedUsers: IUser[] = state.users.filter(
-        (user) => user.userName !== action.userName
+        (user) => user.userName !== action.type
       );
       return {
         ...state,
         users: updatedUsers,
       };
-      case 'EDIT_USER':
+    case 'EDIT_USER':
       return {
-        ...state, 
-        users: state.users.map((user) => user.id === action.user.id ? { ...user, ...action.user } : user)
-      }
+        ...state,
+        users: state.users.map((user) =>
+          user.id === action.user.id ? { ...user, ...action.user } : user
+        ),
+      };
+    default:
+      return state;
   }
-
-  return state;
 };
 
 export default reducer;
-
-

@@ -1,31 +1,51 @@
 interface IUser {
-    id: number;
-    userName: string;
-    email: string;
-    profilePicture: string;
-    statusMessage: string;
-    friends : number[]
+  id: number;
+  userName: string;
+  email: string;
+  profilePicture: string;
+  statusMessage: string;
+  friends: number[];
 }
 
 interface AddUserAction {
-    type: 'ADD_USER';
-    user: Omit<IUser, 'id' | 'profilePicture' | 'statusMessage' | 'friends'>; 
+  type: 'ADD_USER';
+  user: Omit<IUser, 'id' | 'profilePicture' | 'statusMessage' | 'friends'>;
 }
 
 interface RemoveUserAction {
-    type: 'REMOVE_USER';
-    userName: string; 
+  type: 'REMOVE_USER';
+  userName: string;
 }
 
 interface EditUserAction {
-    type: 'EDIT_USER';
-    user: Partial<Omit<IUser, 'id'>> & { id: number };
+  type: 'EDIT_USER';
+  user: Partial<Omit<IUser, 'id'>> & { id: number };
 }
 
-type UserAction = AddUserAction | RemoveUserAction | EditUserAction;
+interface LoginUserAction {
+    type: 'LOGIN';
+    user: Omit<IUser, 'id' | email | 'profilePicture' | 'statusMessage' | 'friends'>;
+  }
+
+type UserAction = AddUserAction | RemoveUserAction | EditUserAction | LoginUserAction;
 
 interface UserState {
-    users: IUser[];
+  users: IUser[];
 }
 
+interface IAuth {
+  isLoggedIn: boolean; // Indicates if a user is logged in
+  currentUserId: number | null; // ID of the currently logged-in user
+  // userName instead of ID
+}
+
+type StateType = {
+  users: IUser[];
+  auth: IAuth;
+};
+
+interface IStatusMEssage {
+  id: number;
+  statusMessage: string
+}
 

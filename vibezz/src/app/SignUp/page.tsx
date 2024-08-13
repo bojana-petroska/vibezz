@@ -1,8 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dispatch } from 'redux';
-import { useDispatch } from 'react-redux';
 import { addUser } from '../store/actionCreator';
+import { useDispatch, useSelector } from 'react-redux';
+import SignIn from '../components/SignIn';
 
 type Props = {
   saveUser: (user: IUser | any) => void;
@@ -13,6 +14,8 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
   const [email, setEmail] = useState('');
   const dispatch: Dispatch<any> = useDispatch();
 
+  const users = useSelector((state: UserState) => state.users);
+
   const addNewUser = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
     let validation = true;
@@ -22,16 +25,23 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
       validation = false;
     }
 
+    // Will add pop up messages for wrong input when(if) we have a design
+
     if (validation) {
       const newUser = { userName, email };
       dispatch(addUser(newUser));
       setUserName('');
       setEmail('');
-      console.log(newUser);
+      console.log(`New User:`, newUser);
     }
   };
 
+  useEffect(() => {
+    console.log(`All Users:`, users);
+  });
+
   return (
+    <div>
     <form onSubmit={addNewUser}>
       <input
         type="text"
@@ -47,9 +57,16 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button onClick={addNewUser}>Add User</button>
+      <button onClick={addNewUser}>Sign Up</button>
     </form>
+    <SignIn />
+    </div>
   );
 };
 
 export default SignUp;
+
+
+
+
+
