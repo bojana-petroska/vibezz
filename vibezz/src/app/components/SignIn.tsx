@@ -1,11 +1,12 @@
 'use client';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { redirect } from 'next/navigation'
 
 const SignIn: React.FC = () => {
-  // const users = useSelector((state: UserState) => state.users);
-  // const [userName, setUserName] = useState('');
-  // const dispatch = useDispatch();
+  const users = useSelector((state: UserState) => state.users);
+  const [userName, setUserName] = useState('');
+  const dispatch = useDispatch();
 
   // const login = () => {
   //   const action: LoginUserAction
@@ -18,7 +19,7 @@ const SignIn: React.FC = () => {
           type="text"
           id="userName"
           placeholder="username"
-        //   value={}
+          value={userName}
         //   onChange={}
         />
       </form>

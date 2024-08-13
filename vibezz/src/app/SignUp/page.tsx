@@ -4,6 +4,7 @@ import { Dispatch } from 'redux';
 import { addUser } from '../store/actionCreator';
 import { useDispatch, useSelector } from 'react-redux';
 import SignIn from '../components/SignIn';
+import { redirect } from 'next/navigation'
 
 type Props = {
   saveUser: (user: IUser | any) => void;
@@ -14,7 +15,7 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
   const [email, setEmail] = useState('');
   const dispatch: Dispatch<any> = useDispatch();
 
-  const users = useSelector((state: UserState) => state.users);
+  const users = useSelector((state: StateType) => state.users);
 
   const addNewUser = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
@@ -40,33 +41,32 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
     console.log(`All Users:`, users);
   });
 
+  if (users.auth.isLoggedIn) {
+    redirect('/');
+  }
+
   return (
     <div>
-    <form onSubmit={addNewUser}>
-      <input
-        type="text"
-        id="userName"
-        placeholder="username"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-      />
-      <input
-        type="text"
-        id="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button onClick={addNewUser}>Sign Up</button>
-    </form>
-    <SignIn />
+      <form onSubmit={addNewUser}>
+        <input
+          type="text"
+          id="userName"
+          placeholder="username"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <input
+          type="text"
+          id="email"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button onClick={addNewUser}>Sign Up</button>
+      </form>
+      <SignIn />
     </div>
   );
 };
 
 export default SignUp;
-
-
-
-
-

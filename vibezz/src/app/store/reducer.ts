@@ -29,7 +29,7 @@ export const initialState: StateType = {
   ],
   auth: {
     isLoggedIn: false,
-    currentUserId: null,
+    userName: '',
   },
 };
 
@@ -57,9 +57,10 @@ const reducer = (
             ...state,
             auth: {
               isLoggedIn: true,
-              currentUserId: action.user.id,
+              userName: action.user.userName,
             }
           }
+          return newState;
         } else {
           console.log(`You have to provide username for login`);
           return state;

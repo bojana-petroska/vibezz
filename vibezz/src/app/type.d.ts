@@ -34,9 +34,8 @@ interface UserState {
 }
 
 interface IAuth {
-  isLoggedIn: boolean; // Indicates if a user is logged in
-  currentUserId: number | null; // ID of the currently logged-in user
-  // userName instead of ID
+  isLoggedIn: boolean;
+  userName: string; 
 }
 
 type StateType = {
