@@ -15,7 +15,7 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
   const [email, setEmail] = useState('');
   const dispatch: Dispatch<any> = useDispatch();
 
-  const users = useSelector((state: StateType) => state.users);
+  const users = useSelector((state: UserAuth) => state);
 
   const addNewUser = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
@@ -41,9 +41,9 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
     console.log(`All Users:`, users);
   });
 
-  if (users.auth.isLoggedIn) {
-    redirect('/');
-  }
+  // if (users.isLoggedIn) {
+  //   redirect('/');
+  // }
 
   return (
     <div>

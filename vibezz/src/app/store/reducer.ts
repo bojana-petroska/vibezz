@@ -51,9 +51,10 @@ const reducer = (
         ...state,
         users: [...state.users, newUser],
       };
-      case 'LOGIN':
-        if (action.user.userName) {
-          const newState: StateType = {
+    case 'LOGIN':
+      if (state.users.find((user)=> user.userName === action.user.userName))
+      {
+            const newState: StateType = {
             ...state,
             auth: {
               isLoggedIn: true,
@@ -64,7 +65,8 @@ const reducer = (
         } else {
           console.log(`You have to provide username for login`);
           return state;
-        }
+      }
+        
     case 'REMOVE_USER':
       const updatedUsers: IUser[] = state.users.filter(
         (user) => user.userName !== action.type

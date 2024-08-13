@@ -8,9 +8,19 @@ const SignIn: React.FC = () => {
   const [userName, setUserName] = useState('');
   const dispatch = useDispatch();
 
-  // const login = () => {
-  //   const action: LoginUserAction
-  // }
+  const login = (e:React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    
+        const action = {
+            type: 'LOGIN',
+            user: {
+                userName,
+            }
+        }
+        dispatch(action);
+       
+   
+  }
 
   return (
     <div>
@@ -20,10 +30,10 @@ const SignIn: React.FC = () => {
           id="userName"
           placeholder="username"
           value={userName}
-        //   onChange={}
+          onChange={e => setUserName(e.target.value)}
         />
       </form>
-      <button>Sign In</button>
+      <button onClick={login} >Sign In</button>
     </div>
   );
 };
