@@ -2,6 +2,7 @@
 import Navbar from './components/Navbar';
 import StoreWrapper from './store/store';
 
+
 export default function Home() {
   return (
     <StoreWrapper>
@@ -13,3 +14,5 @@ export default function Home() {
     </StoreWrapper>
   );
 }
+
+

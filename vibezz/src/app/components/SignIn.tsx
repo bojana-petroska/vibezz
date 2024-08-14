@@ -18,12 +18,11 @@ const SignIn: React.FC = () => {
             }
         }
         dispatch(action);
-       
-   
   }
 
   if (users.auth.isLoggedIn) {
-    redirect('/Profile');
+    console.log(users.auth.isLoggedIn);
+    redirect('/FeedPage');
   }
 
   return (
