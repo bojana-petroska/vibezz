@@ -1,12 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 const SignIn: React.FC = () => {
   const users = useSelector((state: StateType) => state);
   const [userName, setUserName] = useState('');
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const login = (e:React.FormEvent<HTMLElement>) => {
     e.preventDefault();
@@ -20,10 +21,13 @@ const SignIn: React.FC = () => {
         dispatch(action);
   }
 
-  if (users.auth.isLoggedIn) {
-    console.log(users.auth.isLoggedIn);
-    redirect('/FeedPage');
-  }
+  useEffect(() => {
+    if (users.auth.isLoggedIn) {
+      console.log(users.auth.isLoggedIn);
+      router.push('/FeedPage');
+    }
+  }, [users.auth.isLoggedIn, router]);
+
 
   return (
     <div>

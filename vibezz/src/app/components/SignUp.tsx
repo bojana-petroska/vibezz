@@ -3,12 +3,16 @@ import { useEffect, useState } from 'react';
 import { Dispatch } from 'redux';
 import { addUser } from '../store/actionCreator';
 import { useDispatch, useSelector } from 'react-redux';
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+
+//btn=> overlay action two cases
 
 export const SignUp: React.FC = () => {
+
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const dispatch: Dispatch<any> = useDispatch();
+  const router = useRouter();
 
   const users = useSelector((state: StateType) => state);
 
@@ -35,12 +39,12 @@ export const SignUp: React.FC = () => {
 
   useEffect(() => {
     console.log(`All Users:`, users);
-  });
-
-  if (users.auth.isLoggedIn) {
-    redirect('/FeedPage');
-  };
-
+    if (users.auth.isLoggedIn) {
+      console.log(users.auth.isLoggedIn);
+      router.push('/Profile');
+    }
+  }, [users.auth.isLoggedIn, router, users]);
+ 
   return (
     <div>
       <form onSubmit={addNewUser}>
