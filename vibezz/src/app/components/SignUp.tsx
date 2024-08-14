@@ -5,8 +5,6 @@ import { addUser } from '../store/actionCreator';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
-//btn=> overlay action two cases
-
 export const SignUp: React.FC = () => {
 
   const [userName, setUserName] = useState('');
