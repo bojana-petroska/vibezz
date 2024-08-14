@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: rgb(230, 140, 155);
-  margin: 100px;
-}
 
+body {
+  @apply h-full w-full;
+  background: radial-gradient(at center, #2E2B76 0%, #010607 100%);
+  min-height: 100vh;
+  margin: 0;
+}

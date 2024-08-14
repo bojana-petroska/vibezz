@@ -71,3 +71,5 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
 };
 
 export default SignUp;
+
+
