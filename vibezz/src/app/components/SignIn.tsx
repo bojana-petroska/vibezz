@@ -23,7 +23,7 @@ const SignIn: React.FC = () => {
   }
 
   if (users.auth.isLoggedIn) {
-    redirect('/Profile');
+    redirect('/FeedPage');
   }
 
   return (

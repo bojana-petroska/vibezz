@@ -9,6 +9,7 @@ import { redirect } from 'next/navigation'
 type Props = {
   saveUser: (user: IUser | any) => void;
 };
+//btn=> overlay action two cases
 
 export const SignUp: React.FC<Props> = ({ saveUser }) => {
   const [userName, setUserName] = useState('');
@@ -45,6 +46,7 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
   if (users.auth.isLoggedIn) {
     redirect('/Profile');
   };
+ 
 
   return (
     <div>
