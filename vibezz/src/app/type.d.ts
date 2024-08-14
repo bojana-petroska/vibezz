@@ -46,7 +46,7 @@ type StateType = {
 interface IStatusMEssage {
   id: number;
   statusMessage: string
-}
+};
 
-type UserAuth = IUser | IAuth
+// type UserAuth = IUser | IAuth;
 

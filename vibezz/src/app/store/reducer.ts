@@ -46,7 +46,7 @@ const reducer = (
         profilePicture: '',
         statusMessage: '',
         friends: [],
-      };
+      }
       return {
         ...state,
         users: [...state.users, newUser],

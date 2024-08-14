@@ -15,7 +15,7 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
   const [email, setEmail] = useState('');
   const dispatch: Dispatch<any> = useDispatch();
 
-  const users = useSelector((state: UserAuth) => state);
+  const users = useSelector((state: StateType) => state);
 
   const addNewUser = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
@@ -31,6 +31,7 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
     if (validation) {
       const newUser = { userName, email };
       dispatch(addUser(newUser));
+      dispatch({ type: 'LOGIN', user: { userName } });
       setUserName('');
       setEmail('');
       console.log(`New User:`, newUser);
@@ -41,12 +42,12 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
     console.log(`All Users:`, users);
   });
 
-  // if (users.isLoggedIn) {
-  //   redirect('/');
-  // }
+  if (users.auth.isLoggedIn) {
+    redirect('/Profile');
+  };
 
   return (
-    <div>
+    <div className="bg-white">
       <form onSubmit={addNewUser}>
         <input
           type="text"
@@ -70,3 +71,5 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
 };
 
 export default SignUp;
+
+
