@@ -48,5 +48,5 @@ interface IStatusMEssage {
   statusMessage: string
 }
 
-type UserAuth = IUser | IAuth
+// type UserAuth = IUser | IAuth
 
