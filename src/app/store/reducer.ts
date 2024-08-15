@@ -85,6 +85,15 @@ export const initialState: StateType = {
       statusMessage: 'hello from the ocean! happy to meet you!',
       friends: [1, 3, 4],
     },
+    {
+      id: 8,
+      userName: 'angela',
+      email: 'compact@gmail.com',
+      profilePicture:
+        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffthmb.tqn.com%2FD9LmnHYOLdxXB4OHyJx-_-OkwpI%3D%2F4724x2657%2Ffilters%3Afill(auto%2C1)%2FGettyImages-634869043-58a6e83f5f9b58a3c918ca12.jpg&f=1&nofb=1&ipt=08dcfa3711302389c545cd10adf9fed45cdc2803b9db3f010f6613ba7291d3e3&ipo=images',
+      statusMessage: 'hello from the ocean! happy to meet you!',
+      friends: [1, 3, 4],
+    },
   ],
   auth: {
     isLoggedIn: false,
