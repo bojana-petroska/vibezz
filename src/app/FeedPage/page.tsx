@@ -2,6 +2,7 @@
 import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import RandomImage from '../components/RandomImage';
+import FriendsList from '../components/FriendsList';
 
 const FeedPage: React.FC = () => {
   const users = useSelector((state: StateType) => state);
@@ -17,22 +18,8 @@ const FeedPage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-
       <div className="flex flex-col md:flex-row min-h-screen">
-        <div className="w-full md:w-1/4 flex flex-row md:flex-col items-start overflow-x-auto md:overflow-visible top-0 left-0 p-4 space-x-3 md:space-x-0 md:space-y-3">
-          {friendsData.map((friend, index) => (
-            <div
-              key={friend.id}
-              className={`flex-shrink-0 ${index !== 0 ? '-ml-3 md:ml-0' : ''}`}>
-              <img
-                src={friend.profilePicture}
-                alt={`${friend.userName}'s profile`}
-                className="w-12 h-12 rounded-full object-cover border border-custom-purple"
-              />
-            </div>
-          ))}
-        </div>
-
+        <FriendsList friends={friendsData} />
         <div className="flex flex-col w-full md:w-2/4 p-4">
           <div className="mb-6 p-4 border border-custom-purple rounded-lg bg-transparent">
             {loggedInUser && (
@@ -49,7 +36,6 @@ const FeedPage: React.FC = () => {
               </div>
             )}
           </div>
-
           {friendsData.length === 0 ? (
             <p className="text-white">No friends yet :(</p>
           ) : (

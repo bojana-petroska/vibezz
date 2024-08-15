@@ -24,13 +24,14 @@ export function addFriend(userId: number, friendId: number) {
   };
 }
 
+export function removeFriend(friendName: string) {
+  return {
+    type: 'REMOVE_FRIEND',
+    payload: friendName,
+  };
+}
+
 export const signOutCurrentUser = () => ({
   type: 'SIGN_OUT_USER',
 });
-
-
-
-
-
-
 

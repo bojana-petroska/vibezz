@@ -5,6 +5,7 @@ interface IUser {
   profilePicture: string;
   statusMessage: string;
   friends: number[];
+  coverPhoto?: string;
 }
 
 interface AddUserAction {
@@ -35,7 +36,14 @@ interface AddFriendAction {
   }
 }
 
-type UserAction = AddUserAction | RemoveUserAction | EditUserAction | LoginUserAction | AddFriendAction;
+interface RemoveFriendAction {
+  type: 'REMOVE_FRIEND';
+  payload: {
+    friendName: string;
+  }
+}
+
+type UserAction = AddUserAction | RemoveUserAction | EditUserAction | LoginUserAction | AddFriendAction | RemoveFriendAction;
 
 interface UserState {
   users: IUser[];
