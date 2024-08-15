@@ -44,7 +44,7 @@ import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
 import { useState } from 'react';
 
-export const Auth: React.FC = () => {
+const Auth: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(true);
 
   const toggleButoon = () => setIsSignUp(!isSignUp);
