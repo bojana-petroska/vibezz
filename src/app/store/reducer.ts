@@ -76,6 +76,15 @@ export const initialState: StateType = {
       statusMessage: 'hello from the ocean!',
       friends: [1, 2, 3, 4],
     },
+    {
+      id: 7,
+      userName: 'will',
+      email: 'compact@gmail.com',
+      profilePicture:
+        'https://www.newzealand.com/assets/Tourism-NZ/Christchurch-Canterbury/img-1536059759-5216-9737-p-CB63B319-DDEA-A7A6-C7513FEBDDCE31C1-2544003__aWxvdmVrZWxseQo_CropResizeWzk0MCxudWxsLDgwLCJwbmciXQ.png',
+      statusMessage: 'hello from the ocean! happy to meet you!',
+      friends: [1, 3, 4],
+    },
   ],
   auth: {
     isLoggedIn: false,
