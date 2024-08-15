@@ -51,7 +51,7 @@ type StateType = {
   auth: IAuth;
 };
 
-interface IStatusMEssage {
+interface IStatusMessage {
   id: number;
   statusMessage: string
 }
