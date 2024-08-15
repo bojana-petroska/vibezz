@@ -3,17 +3,14 @@ import { useEffect, useState } from 'react';
 import { Dispatch } from 'redux';
 import { addUser } from '../store/actionCreator';
 import { useDispatch, useSelector } from 'react-redux';
-import SignIn from '../components/SignIn';
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
-type Props = {
-  saveUser: (user: IUser | any) => void;
-};
+export const SignUp: React.FC = () => {
 
-export const SignUp: React.FC<Props> = ({ saveUser }) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const dispatch: Dispatch<any> = useDispatch();
+  const router = useRouter();
 
   const users = useSelector((state: StateType) => state);
 
@@ -24,7 +21,7 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
 
     if (!userName && !email && !validateEmail.test(email)) {
       validation = false;
-    }
+    };
 
     // Will add pop up messages for wrong input when(if) we have a design
 
@@ -40,12 +37,12 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
 
   useEffect(() => {
     console.log(`All Users:`, users);
-  });
+    if (users.auth.isLoggedIn) {
 
-  if (users.auth.isLoggedIn) {
-    redirect('/Profile');
-  };
-
+      router.push('/Profile');
+    }
+  }, [users.auth.isLoggedIn, router, users]);
+ 
   return (
     <div className="bg-white">
       <form onSubmit={addNewUser}>
@@ -65,11 +62,9 @@ export const SignUp: React.FC<Props> = ({ saveUser }) => {
         />
         <button onClick={addNewUser}>Sign Up</button>
       </form>
-      <SignIn />
     </div>
   );
 };
 
 export default SignUp;
-
 

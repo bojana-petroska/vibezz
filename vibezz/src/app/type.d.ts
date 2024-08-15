@@ -13,7 +13,7 @@ interface AddUserAction {
 }
 
 interface RemoveUserAction {
-  type: 'REMOVE_USER';
+  type: 'SIGN_OUT_USER';
   userName: string;
 }
 
@@ -27,7 +27,15 @@ interface LoginUserAction {
     user: Omit<IUser, 'id' | email | 'profilePicture' | 'statusMessage' | 'friends'>;
   }
 
-type UserAction = AddUserAction | RemoveUserAction | EditUserAction | LoginUserAction;
+interface AddFriendAction {
+  type: 'ADD_FRIEND';
+  payload: {
+    userId: number;
+    friendId: number;
+  }
+}
+
+type UserAction = AddUserAction | RemoveUserAction | EditUserAction | LoginUserAction | AddFriendAction;
 
 interface UserState {
   users: IUser[];
@@ -48,5 +56,8 @@ interface IStatusMEssage {
   statusMessage: string
 };
 
+<<<<<<< HEAD
 // type UserAuth = IUser | IAuth;
+=======
+>>>>>>> ProfilePage
 
