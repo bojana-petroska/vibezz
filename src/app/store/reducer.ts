@@ -157,15 +157,15 @@ const reducer = (
             : user
         ),
       };
-      case 'REMOVE_FRIEND':
-      return {
-        ...state,
-        users: state.users.map((user) =>
-          user.id === action.payload.userId
-            ? { ...user, friends: [...user.friends, action.payload.friendId] }
-            : user
-        ),
-      };
+      // case 'REMOVE_FRIEND':
+      // return {
+      //   ...state,
+      //   users: state.users.map((user) =>
+      //     user.id === action.payload.userId
+      //       ? { ...user, friends: [...user.friends, action.payload.friendId] }
+      //       : user
+      //   ),
+      // };
     default:
       return state;
   }

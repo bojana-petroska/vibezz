@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="flex flex-col md:flex-row items-center justify-center md:justify-between p-4">
+    <nav className="flex flex-col md:flex-row items-center justify-center md:justify-between p-4 mx-10 my-10">
       <div className="flex flex-wrap justify-center space-x-4 md:space-x-8 mb-4 md:mb-0">
         <button
           onClick={() => navigation('/FeedPage')}
@@ -52,3 +52,4 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
