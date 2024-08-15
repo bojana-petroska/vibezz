@@ -1,6 +1,7 @@
 'use client';
 import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
+import RandomImage from '../components/RandomImage';
 
 const FeedPage: React.FC = () => {
   const users = useSelector((state: StateType) => state);
@@ -50,7 +51,6 @@ const FeedPage: React.FC = () => {
       <p>@{nameLoggedInUser}</p>
       <p>{messageLoggedInUser}</p>
 
-      <img src={'images/strawberries.jpeg'} alt="strawberries"></img>
       <div>
         {friendsData.length === 0 ? (
           <p>no friends yet : (</p>
@@ -67,7 +67,7 @@ const FeedPage: React.FC = () => {
                 }}></img>
               <h3>@{friend.userName}</h3>
               <p>{friend.statusMessage}</p>
-              <img src={'images/strawberries.jpeg'} alt="strawberries"></img>
+              <RandomImage />
             </div>
           ))
         )}

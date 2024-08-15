@@ -20,7 +20,7 @@ body {
   color: white;
 }
 
-img {
+/* img {
   margin: 25px;
 }
 
@@ -56,6 +56,6 @@ nav button:hover {
 nav button.active {
   font-weight: bold;
   background-color: #0056b3; 
-}
+} */
 
 

@@ -74,7 +74,7 @@ const ProfilePage: React.FC = () => {
                 <button onClick={updateUser}>save</button>
               </div>
             ) : (
-              <button onClick={editingStatusMessage}>edit status message</button>
+              <button onClick={editingStatusMessage}>{statusMessage ? `edit status message` : `write a status message`}</button>
             )
             }
             {editing && (
@@ -85,12 +85,6 @@ const ProfilePage: React.FC = () => {
                   value={profilePicture}
                   onChange={(e) => setProfilePicture(e.target.value)}
                 />
-                {/* <input
-                  type="text"
-                  placeholder="status message"
-                  value={statusMessage}
-                  onChange={(e) => setStatusMessage(e.target.value)}
-                /> */}
                 <button onClick={updateUser}>Update</button>
               </div>
             )}
@@ -119,3 +113,4 @@ const ProfilePage: React.FC = () => {
 };
 
 export default ProfilePage;
+
