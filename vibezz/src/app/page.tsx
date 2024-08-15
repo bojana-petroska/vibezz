@@ -20,15 +20,9 @@ export default function Home() {
   return (
     <StoreWrapper>
       <div>
-        {/* <Navbar />
-        <FeedPage/> */}
         <br/>
       </div>
     </StoreWrapper>
   );
 }
-
-
-
-
 

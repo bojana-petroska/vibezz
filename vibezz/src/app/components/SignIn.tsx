@@ -24,7 +24,7 @@ const SignIn: React.FC = () => {
   useEffect(() => {
     if (users.auth.isLoggedIn) {
       console.log(users.auth.isLoggedIn);
-      router.push('/Profile');
+      router.push('/FeedPage');
     }
   }, [users.auth.isLoggedIn, router]);
 

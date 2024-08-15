@@ -23,8 +23,6 @@ export const SignUp: React.FC = () => {
       validation = false;
     };
 
-    // Will add pop up messages for wrong input when(if) we have a design
-
     if (validation) {
       const newUser = { userName, email };
       dispatch(addUser(newUser));
