@@ -6,8 +6,12 @@ const RandomImage = () => {
     console.log(randomUrl);
 
     return (
-        <div>
-            <img src={randomUrl} alt='random url'/>
+        <div className="relative w-full" style={{ paddingTop: '71.4%' }}>
+            <img 
+            src={randomUrl} 
+            alt='random url'
+            className="absolute inset-0 w-full h-full object-cover rounded-lg"
+            />
         </div>
     )
 }
