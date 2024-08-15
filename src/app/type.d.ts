@@ -56,8 +56,3 @@ interface IStatusMEssage {
   statusMessage: string
 };
 
-<<<<<<< HEAD
-// type UserAuth = IUser | IAuth;
-=======
->>>>>>> ProfilePage
-
