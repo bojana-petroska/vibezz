@@ -72,7 +72,7 @@
   }
 
 /* AddFriend */
-  /* .add-friends-container {
+  .add-friends-container {
     @apply border border-custom-purple rounded-lg p-4 bg-transparent;
   }
   
@@ -86,11 +86,13 @@
   
   .add-friends-button {
     @apply mt-2 bg-custom-purple text-white rounded-lg p-2 w-full;
-  } */
+  }
 
   /* DisplayFriends */
   .friends-list-container {
-    @apply w-full md:w-1/4 flex flex-row md:flex-col items-start overflow-x-auto md:overflow-visible top-0 left-0 p-4 space-x-3 md:space-x-0 md:space-y-3 mr-10 md:mr-40;
+    @apply w-full md:w-1/4 flex flex-row md:flex-col overflow-x-auto md:overflow-visible md:space-x-0 md:space-y-3 items-center;
+    margin: 0;
+    padding: 0;
   }
   
   .friend-item {
@@ -105,3 +107,9 @@
     @apply w-12 h-12 rounded-full object-cover border border-custom-purple;
   }
 
+  /* Responsive */
+@media (max-width: 640px) {
+  .friends-list-container {
+    @apply ml-10;
+  }
+}

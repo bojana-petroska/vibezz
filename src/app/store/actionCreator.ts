@@ -24,10 +24,12 @@ export function addFriend(userId: number, friendId: number) {
   };
 }
 
-export function removeFriend(friendName: string) {
+export function removeFriend(friendId: number) {
   return {
     type: 'REMOVE_FRIEND',
-    payload: friendName,
+    payload: {
+      friendId,
+    }
   };
 }
 

@@ -37,7 +37,7 @@ const FeedPage: React.FC = () => {
             )}
           </div>
           {friendsData.length === 0 ? (
-            <p className="no-friends-message">No friends yet :(</p>
+            <p></p>
           ) : (
             friendsData.map((friend) => (
               <div key={friend.id} className="friend-card">

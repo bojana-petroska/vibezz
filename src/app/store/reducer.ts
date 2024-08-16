@@ -73,7 +73,7 @@ export const initialState: StateType = {
       email: 'compact@gmail.com',
       profilePicture:
         'https://images.unsplash.com/photo-1570481662006-a3a1374699e8?ixlib=rb-4.0.3&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb',
-      statusMessage: 'hello from the ocean!',
+      statusMessage: 'VIBINGGG',
       friends: [1, 2, 3, 4],
     },
     {
@@ -91,7 +91,16 @@ export const initialState: StateType = {
       email: 'compact@gmail.com',
       profilePicture:
         'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffthmb.tqn.com%2FD9LmnHYOLdxXB4OHyJx-_-OkwpI%3D%2F4724x2657%2Ffilters%3Afill(auto%2C1)%2FGettyImages-634869043-58a6e83f5f9b58a3c918ca12.jpg&f=1&nofb=1&ipt=08dcfa3711302389c545cd10adf9fed45cdc2803b9db3f010f6613ba7291d3e3&ipo=images',
-      statusMessage: 'hello from the ocean! happy to meet you!',
+      statusMessage: 'Today is not my day!',
+      friends: [1, 3, 4],
+    },
+    {
+      id: 9,
+      userName: 'malik',
+      email: 'compact@gmail.com',
+      profilePicture:
+        'https://get.wallhere.com/photo/face-horns-wildlife-impala-antelope-Springbok-gazelle-fauna-mammal-horn-vertebrate-close-up-cow-goat-family-gacela-gasela-pronghorn-530108.jpg',
+      statusMessage: 'Running is life!',
       friends: [1, 3, 4],
     },
   ],
@@ -157,15 +166,12 @@ const reducer = (
             : user
         ),
       };
-      // case 'REMOVE_FRIEND':
-      // return {
-      //   ...state,
-      //   users: state.users.map((user) =>
-      //     user.id === action.payload.userId
-      //       ? { ...user, friends: [...user.friends, action.payload.friendId] }
-      //       : user
-      //   ),
-      // };
+      case 'REMOVE_FRIEND':
+        const updatedFriends: IUser[] = state.users.filter((user) => user.id !== action.payload.friendId)
+      return {
+        ...state,
+        users: updatedFriends,
+      };
     default:
       return state;
   }

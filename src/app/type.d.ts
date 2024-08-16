@@ -39,7 +39,7 @@ interface AddFriendAction {
 interface RemoveFriendAction {
   type: 'REMOVE_FRIEND';
   payload: {
-    friendName: string;
+    friendId: number;
   }
 }
 

@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import FriendsList from '../components/FriendsList';
 import AddFriends from '../components/AddFriend';
 import '../styles.css/profile.css';
+import DeleteFriends from '../components/DeleteFriend';
 
 const ProfilePage: React.FC = () => {
   const [profilePicture, setProfilePicture] = useState('');
@@ -135,6 +136,7 @@ const ProfilePage: React.FC = () => {
         </div>
         <div>
           <AddFriends />
+          <DeleteFriends />
         </div>
       </div>
     </div>
