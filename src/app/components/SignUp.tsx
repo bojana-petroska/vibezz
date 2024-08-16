@@ -4,9 +4,9 @@ import { Dispatch } from 'redux';
 import { addUser } from '../store/actionCreator';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import '../styles.css/components.css';
 
 export const SignUp: React.FC = () => {
-
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const dispatch: Dispatch<any> = useDispatch();
@@ -21,7 +21,7 @@ export const SignUp: React.FC = () => {
 
     if (!userName && !email && !validateEmail.test(email)) {
       validation = false;
-    };
+    }
 
     if (validation) {
       const newUser = { userName, email };
@@ -36,22 +36,21 @@ export const SignUp: React.FC = () => {
   useEffect(() => {
     console.log(`All Users:`, users);
     if (users.auth.isLoggedIn) {
-
       router.push('/Profile');
     }
   }, [users.auth.isLoggedIn, router, users]);
- 
+
   return (
     <div>
-      <form onSubmit={addNewUser} className="flex flex-col p-12">
-      <h2 className="text-2xl font-bold mb-4 text-white mb-12 text-center">Sign Up</h2>
+      <form onSubmit={addNewUser} className="signup-form">
+        <h2 className="signup-title">Sign Up</h2>
         <input
           type="text"
           id="userName"
           placeholder="username"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          className="p-2 pl-6 bg-transparent border border-0.5 border-custom-purple rounded-full text-white placeholder-custom-purple focus:outline-none mb-4"
+          className="signup-input"
         />
         <input
           type="text"
@@ -59,12 +58,11 @@ export const SignUp: React.FC = () => {
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="p-2 pl-6 bg-transparent border border-0.5 border-custom-purple rounded-full text-white placeholder-custom-purple focus:outline-none mb-10"
+          className="signup-input"
         />
-        <button 
-        type="submit"
-         className="w-full py-2 px-4 rounded-full bg-transparent text-custom-purple border border-0.5 border-custom-purple hover:bg-custom-purple hover:text-white focus:bg-custom-purple focus:text-white"
-        >Sign Up</button>
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
       </form>
     </div>
   );

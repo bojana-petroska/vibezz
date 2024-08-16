@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import '../styles.css/components.css';
 
 const SignIn: React.FC = () => {
   const users = useSelector((state: StateType) => state);
@@ -30,20 +31,17 @@ const SignIn: React.FC = () => {
 
   return (
     <div>
-
-      <form onSubmit={login} className="flex flex-col  p-12">
-      <h2 className="text-2xl font-bold mb-4 text-white mb-12 text-center">Sign In</h2>
+      <form onSubmit={login} className="signin-form">
+        <h2 className="signin-title">Sign In</h2>
         <input
           type="text"
           id="userName"
           placeholder="username"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          className="p-2 pl-6 bg-transparent border border-0.5 border-custom-purple rounded-full text-white placeholder-custom-purple focus:outline-none mb-8"
+          className="signin-input"
         />
-        <button
-          type="submit"
-          className="w-full py-2 px-4 rounded-full bg-transparent text-custom-purple border border-0.5 border-custom-purple hover:bg-custom-purple hover:text-white focus:bg-custom-purple focus:text-white">
+        <button type="submit" className="signin-button">
           Sign In
         </button>
       </form>

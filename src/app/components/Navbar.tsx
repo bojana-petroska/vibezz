@@ -2,6 +2,7 @@
 import { useRouter, usePathname } from 'next/navigation';
 import { signOutCurrentUser } from '../store/actionCreator';
 import { useDispatch } from 'react-redux';
+import '../styles.css/components.css';
 
 const Navbar: React.FC = () => {
   const router = useRouter();
@@ -18,32 +19,24 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="flex flex-col md:flex-row items-center justify-center md:justify-between p-4 mx-10 my-10">
-      <div className="flex flex-wrap justify-center space-x-4 md:space-x-8 mb-4 md:mb-0">
+    <nav className="navbar">
+      <div className="navbar-buttons">
         <button
           onClick={() => navigation('/FeedPage')}
-          className={`w-40 md:w-36 px-4 py-2 rounded-full text-white flex justify-center items-center transition-all duration-300 ${
-            pathName === '/FeedPage'
-              ? 'bg-gradient-to-r from-[#504CB3] to-[#7C79C9] shadow-xl'
-              : 'bg-transparent border border-white border-opacity-50'
-          }`}>
+          className={`navbar-button ${pathName === '/FeedPage' ? 'navbar-button-active' : 'navbar-button-inactive'}`}
+        >
           Feed
         </button>
         <button
           onClick={() => navigation('/Profile')}
-          className={`w-40 md:w-36 px-4 py-2 rounded-full text-white flex justify-center items-center transition-all duration-300 ${
-            pathName === '/Profile'
-              ? 'bg-gradient-to-r from-[#504CB3] to-[#7C79C9] shadow-xl'
-              : 'bg-transparent border border-white border-opacity-50'
-          }`}>
+          className={`navbar-button ${pathName === '/Profile' ? 'navbar-button-active' : 'navbar-button-inactive'}`}
+        >
           Profile
         </button>
       </div>
 
-      <div className="flex justify-center md:justify-end mt-4 md:mt-0 md:ml-auto">
-        <button
-          onClick={signOut}
-          className="w-40 md:w-36 lg:w-36 px-4 py-2 rounded-full text-white flex justify-center items-center border border-white border-opacity-50 bg-transparent transition-all duration-300">
+      <div className="navbar-signout">
+        <button onClick={signOut} className="navbar-button navbar-button-inactive">
           Sign Out
         </button>
       </div>
@@ -52,4 +45,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-

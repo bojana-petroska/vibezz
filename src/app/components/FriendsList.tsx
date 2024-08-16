@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+import '../styles.css/components.css'
 
 interface Friend {
   id: number;
@@ -13,16 +14,16 @@ interface FriendsListProps {
 
 const FriendsList: React.FC<FriendsListProps> = ({ friends }) => {
   return (
-    <div className="w-full md:w-1/4 flex flex-row md:flex-col items-start overflow-x-auto md:overflow-visible top-0 left-0 p-4 space-x-3 md:space-x-0 md:space-y-3 mr-10 md:mr-40">
+    <div className="friends-list-container">
       {friends.map((friend, index) => (
         <div
           key={friend.id}
-          className={`flex-shrink-0 ${index !== 0 ? '-ml-3 md:ml-0' : ''}`}
+          className={`friend-item ${index !== 0 ? 'ml-3' : ''}`}
         >
           <img
             src={friend.profilePicture}
             alt={`${friend.userName}'s profile`}
-            className="w-12 h-12 rounded-full object-cover border border-custom-purple"
+            className="friend-image"
           />
         </div>
       ))}

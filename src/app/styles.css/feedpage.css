@@ -1,0 +1,69 @@
+.feed-page-container {
+    @apply flex flex-col min-h-screen;
+  }
+  
+  .feed-content-container {
+    @apply flex flex-col md:flex-row min-h-screen;
+  }
+  
+  .feed-main-content {
+    @apply flex flex-col w-full md:w-2/4 p-4;
+  }
+  
+  .user-info-card {
+    @apply mb-6 p-4 border border-custom-purple rounded-lg bg-transparent;
+  }
+  
+  .user-info-header {
+    @apply flex items-center mb-4;
+  }
+  
+  .user-profile-picture {
+    @apply w-16 h-16 rounded-full object-cover mr-4 border border-custom-purple;
+  }
+  
+  .user-username {
+    @apply text-custom-purple text-xl;
+  }
+  
+  .user-status-message {
+    @apply text-white;
+  }
+  
+  .no-friends-message {
+    @apply text-white;
+  }
+  
+  .friend-card {
+    @apply mb-4 bg-transparent;
+  }
+  
+  .friend-info-card {
+    @apply border border-custom-purple rounded-lg p-4 bg-transparent;
+  }
+  
+  .friend-info-header {
+    @apply flex items-center mb-4;
+  }
+  
+  .friend-profile-picture {
+    @apply w-10 h-10 rounded-full object-cover mr-4;
+  }
+  
+  .friend-username {
+    @apply text-custom-purple;
+  }
+  
+  .friend-status-message {
+    @apply text-white;
+  }
+  
+  .random-image-container {
+    @apply mt-4;
+  }
+  
+  .feed-sidebar {
+    @apply w-full md:w-1/4;
+  }
+  
+  

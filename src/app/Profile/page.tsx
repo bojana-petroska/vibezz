@@ -1,9 +1,11 @@
 'use client';
 import { useState, useEffect, Dispatch } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editUser, addFriend } from '../store/actionCreator';
+import { editUser } from '../store/actionCreator';
 import Navbar from '../components/Navbar';
 import FriendsList from '../components/FriendsList';
+import AddFriends from '../components/AddFriend';
+import '../styles.css/profile.css';
 
 const ProfilePage: React.FC = () => {
   const [profilePicture, setProfilePicture] = useState('');
@@ -11,7 +13,6 @@ const ProfilePage: React.FC = () => {
   const [statusMessage, setStatusMessage] = useState('');
   const [editStatusMessage, setEditStatusMessage] = useState(false);
   const [editing, setEditing] = useState(false);
-  const [addFriendId, setAddFriendId] = useState<number | null>(null);
 
   const users = useSelector((state: StateType) => state);
   const dispatch: Dispatch<any> = useDispatch();
@@ -34,13 +35,6 @@ const ProfilePage: React.FC = () => {
     }
   };
 
-  const handleAddFriend = () => {
-    if (loggedInUser && addFriendId) {
-      dispatch(addFriend(loggedInUser.id, addFriendId));
-      setAddFriendId(null);
-    }
-  };
-
   const editingStatusMessage = () => {
     setEditStatusMessage((prev) => !prev);
   };
@@ -52,7 +46,9 @@ const ProfilePage: React.FC = () => {
       setStatusMessage(loggedInUser.statusMessage || '');
 
       setEditing(
-        !loggedInUser.profilePicture || !loggedInUser.statusMessage || !loggedInUser.coverPhoto
+        !loggedInUser.profilePicture ||
+          !loggedInUser.statusMessage ||
+          !loggedInUser.coverPhoto
       );
     }
   }, [loggedInUser]);
@@ -62,109 +58,83 @@ const ProfilePage: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="profile-page-container">
       <Navbar />
-      <div className="flex flex-col md:flex-row min-h-screen">
+      <div className="profile-content-container">
         <FriendsList friends={friendsList} />
-        <div className="flex flex-col w-full md:w-2/4 p-4">
-          <div className="relative w-full mb-6">
+        <div className="profile-main-content">
+          <div className="cover-photo-container">
             <img
-              src={coverPhoto || 'https://via.placeholder.com/600x200?text=Cover+Photo'}
+              src={
+                coverPhoto ||
+                'https://via.placeholder.com/600x200?text=Cover+Photo'
+              }
               alt="Cover"
-              className="w-full h-40 object-cover rounded-lg"
+              className="cover-photo"
             />
             <img
               src={profilePicture || 'https://via.placeholder.com/150'}
               alt={`${loggedInUser?.userName}'s profile`}
-              className="w-24 h-24 rounded-full object-cover border-0.5 border-white absolute left-1/2 transform -translate-x-1/2 -bottom-12"
+              className="profile-picture"
             />
           </div>
-          <div className="p-4 border border-custom-purple rounded-lg bg-transparent mt-16">
+          <div className="profile-info-container">
             {loggedInUser && (
               <div className="flex flex-col">
-                <h2 className="text-custom-purple text-xl">@{loggedInUser.userName}</h2>
+                <h2 className="username">@{loggedInUser.userName}</h2>
                 {editStatusMessage ? (
-                  <div className="flex flex-col mt-4">
+                  <div className="status-message-container">
                     <input
                       type="text"
                       placeholder="Edit status message"
                       value={statusMessage}
                       onChange={(e) => setStatusMessage(e.target.value)}
-                      className="p-2 rounded-lg border border-custom-purple"
+                      className="status-message-input"
                     />
-                    <p className="text-white mt-2">{statusMessage}</p>
-                    <button
-                      onClick={updateUser}
-                      className="mt-2 bg-custom-purple text-white rounded-lg p-2"
-                    >
+                    <p className="status-message">{statusMessage}</p>
+                    <button onClick={updateUser} className="save-button">
                       Save
                     </button>
                   </div>
                 ) : (
                   <div className="mt-4">
-                    <p className="text-white">{statusMessage}</p>
+                    <p className="status-message">{statusMessage}</p>
                     <button
                       onClick={editingStatusMessage}
-                      className="mt-2 text-custom-purple"
-                    >
-                      {statusMessage ? 'Edit Status Message' : 'Write a Status Message'}
+                      className="edit-status-button">
+                      {statusMessage
+                        ? 'Edit Status Message'
+                        : 'Write a Status Message'}
                     </button>
                   </div>
                 )}
               </div>
             )}
             {editing && (
-              <div className="mt-4">
+              <div className="edit-profile-container">
                 <input
                   type="text"
                   placeholder="Profile Photo URL"
                   value={profilePicture}
                   onChange={(e) => setProfilePicture(e.target.value)}
-                  className="p-2 mb-2 rounded-lg border border-custom-purple"
+                  className="profile-input"
                 />
                 <input
                   type="text"
                   placeholder="Cover Photo URL"
                   value={coverPhoto}
                   onChange={(e) => setCoverPhoto(e.target.value)}
-                  className="p-2 mb-2 rounded-lg border border-custom-purple"
+                  className="profile-input"
                 />
-                <button
-                  onClick={updateUser}
-                  className="bg-custom-purple text-white rounded-lg p-2"
-                >
+                <button onClick={updateUser} className="update-button">
                   Update
                 </button>
               </div>
             )}
           </div>
         </div>
-        <div className="w-full md:w-1/4 p-4">
-          <div className="border border-custom-purple rounded-lg p-4 bg-transparent">
-            <h3 className="text-custom-purple">Add Friends</h3>
-            <select
-              value={addFriendId || ''}
-              onChange={(e) => setAddFriendId(Number(e.target.value))}
-              className="p-2 mt-2 rounded-lg border border-custom-purple w-full"
-            >
-              <option value="" disabled>
-                Select a friend to add
-              </option>
-              {users.users
-                .filter((user) => user.id !== loggedInUser?.id)
-                .map((user) => (
-                  <option key={user.id} value={user.id}>
-                    {user.userName}
-                  </option>
-                ))}
-            </select>
-            <button
-              onClick={handleAddFriend}
-              className="mt-2 bg-custom-purple text-white rounded-lg p-2 w-full"
-            >
-              Add Friend
-            </button>
-          </div>
+        <div>
+          <AddFriends />
         </div>
       </div>
     </div>
@@ -172,4 +142,3 @@ const ProfilePage: React.FC = () => {
 };
 
 export default ProfilePage;
-

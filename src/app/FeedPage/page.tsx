@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import RandomImage from '../components/RandomImage';
 import FriendsList from '../components/FriendsList';
+import '../styles.css/feedpage.css';
 
 const FeedPage: React.FC = () => {
   const users = useSelector((state: StateType) => state);
@@ -16,51 +17,48 @@ const FeedPage: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="feed-page-container">
       <Navbar />
-      <div className="flex flex-col md:flex-row min-h-screen">
+      <div className="feed-content-container">
         <FriendsList friends={friendsData} />
-        <div className="flex flex-col w-full md:w-2/4 p-4">
-          <div className="mb-6 p-4 border border-custom-purple rounded-lg bg-transparent">
+        <div className="feed-main-content">
+          <div className="user-info-card">
             {loggedInUser && (
-              <div className="flex items-center mb-4">
+              <div className="user-info-header">
                 <img
                   src={loggedInUser.profilePicture}
                   alt={`${loggedInUser.userName}'s profile`}
-                  className="w-16 h-16 rounded-full object-cover mr-4 border border-custom-purple"
-                />
+                  className="user-profile-picture"/>
                 <div>
-                  <h2 className="text-custom-purple text-xl">@{loggedInUser.userName}</h2>
-                  <p className="text-white">{loggedInUser.statusMessage}</p>
+                  <h2 className="user-username">@{loggedInUser.userName}</h2>
+                  <p className="user-status-message">{loggedInUser.statusMessage}</p>
                 </div>
               </div>
             )}
           </div>
           {friendsData.length === 0 ? (
-            <p className="text-white">No friends yet :(</p>
+            <p className="no-friends-message">No friends yet :(</p>
           ) : (
             friendsData.map((friend) => (
-              <div key={friend.id} className="mb-4 bg-transparent">
-                <div className="border border-custom-purple rounded-lg p-4 bg-transparent">
-                  <div className="flex items-center mb-4">
+              <div key={friend.id} className="friend-card">
+                <div className="friend-info-card">
+                  <div className="friend-info-header">
                     <img
                       src={friend.profilePicture}
                       alt={`${friend.userName}'s profile`}
-                      className="w-10 h-10 rounded-full object-cover mr-4"
-                    />
-                    <h3 className="text-custom-purple">@{friend.userName}</h3>
+                      className="friend-profile-picture"/>
+                    <h3 className="friend-username">@{friend.userName}</h3>
                   </div>
-                  <p className="text-white">{friend.statusMessage}</p>
+                  <p className="friend-status-message">{friend.statusMessage}</p>
                 </div>
-                <div className="mt-4">
+                <div>
                   <RandomImage />
                 </div>
               </div>
             ))
           )}
         </div>
-
-        <div className="w-full md:w-1/4"></div>
+        <div className="feed-sidebar"></div>
       </div>
     </div>
   );

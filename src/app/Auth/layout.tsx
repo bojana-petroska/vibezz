@@ -1,4 +1,4 @@
-
+'use client'
 import React from 'react';
 
 const SignUpLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -17,5 +17,4 @@ const SignUpLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 };
 
 export default SignUpLayout;
-
 
