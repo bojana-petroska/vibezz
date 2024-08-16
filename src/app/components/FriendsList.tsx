@@ -25,6 +25,7 @@ const FriendsList: React.FC<FriendsListProps> = ({ friends }) => {
             alt={`${friend.userName}'s profile`}
             className="friend-image"
           />
+          <p className="friend-username-invisible">{friend.userName}</p>
         </div>
       ))}
     </div>

@@ -13,6 +13,8 @@ const ProfilePage: React.FC = () => {
   const [coverPhoto, setCoverPhoto] = useState('');
   const [statusMessage, setStatusMessage] = useState('');
   const [editStatusMessage, setEditStatusMessage] = useState(false);
+  const [editProfilePhoto, setEditProfilePhoto] = useState(false);
+  const [editCoverPhoto, setEditCoverPhoto] = useState(false);
   const [editing, setEditing] = useState(false);
 
   const users = useSelector((state: StateType) => state);
@@ -33,11 +35,21 @@ const ProfilePage: React.FC = () => {
       dispatch(editUser(editedUser));
       setEditing(false);
       setEditStatusMessage(false);
+      setEditProfilePhoto(false);
+      setEditCoverPhoto(false);
     }
   };
 
   const editingStatusMessage = () => {
     setEditStatusMessage((prev) => !prev);
+  };
+
+  const editingProfilePhoto = () => {
+    setEditProfilePhoto((prev) => !prev);
+  };
+
+  const editingCoverPhoto = () => {
+    setEditCoverPhoto((prev) => !prev);
   };
 
   useEffect(() => {
@@ -65,19 +77,65 @@ const ProfilePage: React.FC = () => {
         <FriendsList friends={friendsList} />
         <div className="profile-main-content">
           <div className="cover-photo-container">
-            <img
-              src={
-                coverPhoto ||
-                'https://via.placeholder.com/600x200?text=Cover+Photo'
-              }
-              alt="Cover"
-              className="cover-photo"
-            />
-            <img
-              src={profilePicture || 'https://via.placeholder.com/150'}
-              alt={`${loggedInUser?.userName}'s profile`}
-              className="profile-picture"
-            />
+          {editCoverPhoto ? (
+              <div>
+                <input
+                  type="text"
+                  placeholder="Cover Photo URL"
+                  value={coverPhoto}
+                  onChange={(e) => setCoverPhoto(e.target.value)}
+                  className="profile-input"
+                />
+                <button onClick={updateUser} className="save-button">
+                  Save
+                </button>
+              </div>
+            ) : (
+              <div className="relative">
+                <img
+                  src={
+                    coverPhoto ||
+                    'https://via.placeholder.com/600x200?text=Cover+Photo'
+                  }
+                  alt="Cover"
+                  className="cover-photo"
+                />
+                <button
+                  onClick={editingCoverPhoto}
+                  className="edit-cover-button absolute bottom-2 right-2">
+                  Edit Cover Photo
+                </button>
+              </div>
+            )}
+            {editProfilePhoto ? (
+              <div>
+                <input
+                  type="text"
+                  placeholder="Profile Photo URL"
+                  value={profilePicture}
+                  onChange={(e) => setProfilePicture(e.target.value)}
+                  className="profile-input"
+                />
+                <button onClick={updateUser} className="save-button">
+                  Save
+                </button>
+              </div>
+            ) : (
+              <div className="relative">
+                <img
+                  src={
+                    profilePicture || 'https://via.placeholder.com/150'
+                  }
+                  alt={`${loggedInUser?.userName}'s profile`}
+                  className="profile-picture"
+                />
+                <button
+                  onClick={editingProfilePhoto}
+                  className="edit-profile-picture-button absolute bottom-2 left-2">
+                  Edit Profile Picture
+                </button>
+              </div>
+            )}
           </div>
           <div className="profile-info-container">
             {loggedInUser && (

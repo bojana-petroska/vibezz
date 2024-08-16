@@ -1,113 +1,125 @@
 /* Navbar */
 .navbar {
-    @apply flex flex-col md:flex-row items-center justify-center md:justify-between p-4 mx-4 md:mx-10 my-4 md:my-10;
-  }
-  
-  .navbar-buttons {
-    @apply flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 space-x-0 md:space-x-8 mb-4 md:mb-0;
-  }
-  
-  .navbar-button {
-    @apply w-32 md:w-36 px-4 py-2 rounded-full text-white flex justify-center items-center transition-all duration-300;
-  }
-  
-  .navbar-button-active {
-    @apply bg-gradient-to-r from-[#504CB3] to-[#7C79C9] shadow-xl;
-  }
-  
-  .navbar-button-inactive {
-    @apply bg-transparent border border-white border-opacity-50;
-  }
-  
-  .navbar-signout {
-    @apply flex justify-center md:justify-end mt-4 md:mt-0 md:ml-auto;
-  }
-  
-  /* SignIn */
-  .signin-form {
-    @apply flex flex-col p-12;
-  }
-  
-  .signin-title {
-    @apply text-2xl font-bold text-white mb-12 text-center;
-  }
-  
-  .signin-input {
-    @apply p-2 pl-6 bg-transparent border border-0.5 border-custom-purple rounded-full text-white placeholder-custom-purple focus:outline-none mb-8;
-  }
-  
-  .signin-button {
-    @apply w-full py-2 px-4 rounded-full bg-transparent text-custom-purple border border-0.5 border-custom-purple hover:bg-custom-purple hover:text-white focus:bg-custom-purple focus:text-white;
-  }
+  @apply flex flex-col md:flex-row items-center justify-center md:justify-between p-4 mx-4 md:mx-10 my-4 md:my-10;
+}
 
-  /* SignUP */
-  .signup-form {
-    @apply flex flex-col p-12;
-  }
-  
-  .signup-title {
-    @apply text-2xl font-bold text-white mb-12 text-center;
-  }
-  
-  .signup-input {
-    @apply p-2 pl-6 bg-transparent border border-0.5 border-custom-purple rounded-full text-white placeholder-custom-purple focus:outline-none mb-4;
-  }
-  
-  .signup-input:last-child {
-    @apply mb-10;
-  }
-  
-  .signup-button {
-    @apply w-full py-2 px-4 rounded-full bg-transparent text-custom-purple border border-0.5 border-custom-purple hover:bg-custom-purple hover:text-white focus:bg-custom-purple focus:text-white;
-  }
+.navbar-buttons {
+  @apply flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 space-x-0 md:space-x-8 mb-4 md:mb-0;
+}
 
-  /* RandomImage */
-  .random-image-container {
-    @apply relative w-full;
-    padding-top: 71.4%;
-  }
-  
-  .random-image {
-    @apply absolute inset-0 w-full h-full object-cover rounded-lg;
-  }
+.navbar-button {
+  @apply w-32 md:w-36 px-4 py-2 rounded-full text-white flex justify-center items-center transition-all duration-300;
+}
+
+.navbar-button-active {
+  @apply bg-gradient-to-r from-[#504CB3] to-[#7C79C9] shadow-xl;
+}
+
+.navbar-button-inactive {
+  @apply bg-transparent border border-white border-opacity-50;
+}
+
+.navbar-signout {
+  @apply flex justify-center md:justify-end mt-4 md:mt-0 md:ml-auto;
+}
+
+/* SignIn */
+.signin-form {
+  @apply flex flex-col p-12;
+}
+
+.signin-title {
+  @apply text-2xl font-bold text-white mb-12 text-center;
+}
+
+.signin-input {
+  @apply p-2 pl-6 bg-transparent border border-0.5 border-custom-purple rounded-full text-white placeholder-custom-purple focus:outline-none mb-8;
+}
+
+.signin-button {
+  @apply w-full py-2 px-4 rounded-full bg-transparent text-custom-purple border border-0.5 border-custom-purple hover:bg-custom-purple hover:text-white focus:bg-custom-purple focus:text-white;
+}
+
+/* SignUP */
+.signup-form {
+  @apply flex flex-col p-12;
+}
+
+.signup-title {
+  @apply text-2xl font-bold text-white mb-12 text-center;
+}
+
+.signup-input {
+  @apply p-2 pl-6 bg-transparent border border-0.5 border-custom-purple rounded-full text-white placeholder-custom-purple focus:outline-none mb-4;
+}
+
+.signup-input:last-child {
+  @apply mb-10;
+}
+
+.signup-button {
+  @apply w-full py-2 px-4 rounded-full bg-transparent text-custom-purple border border-0.5 border-custom-purple hover:bg-custom-purple hover:text-white focus:bg-custom-purple focus:text-white;
+}
+
+/* RandomImage */
+.random-image-container {
+  @apply relative w-full;
+  padding-top: 71.4%;
+}
+
+.random-image {
+  @apply absolute inset-0 w-full h-full object-cover rounded-lg;
+}
 
 /* AddFriend */
-  .add-friends-container {
-    @apply border border-custom-purple rounded-lg p-4 bg-transparent;
-  }
-  
-  .add-friends-title {
-    @apply text-custom-purple;
-  }
-  
-  .add-friends-select {
-    @apply p-2 mt-2 rounded-lg border border-custom-purple w-full;
-  }
-  
-  .add-friends-button {
-    @apply mt-2 bg-custom-purple text-white rounded-lg p-2 w-full;
-  }
+.add-friends-container {
+  @apply border border-custom-purple rounded-lg p-4 bg-transparent;
+}
 
-  /* DisplayFriends */
-  .friends-list-container {
-    @apply w-full md:w-1/4 flex flex-row md:flex-col overflow-x-auto md:overflow-visible md:space-x-0 md:space-y-3 items-center;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .friend-item {
-    @apply flex-shrink-0;
-  }
-  
-  .friend-item:not(:first-child) {
-    @apply -ml-3 md:ml-0;
-  }
-  
-  .friend-image {
-    @apply w-12 h-12 rounded-full object-cover border border-custom-purple;
-  }
+.add-friends-title {
+  @apply text-custom-purple;
+}
 
-  /* Responsive */
+.add-friends-select {
+  @apply p-2 mt-2 rounded-lg border border-custom-purple w-full text-zinc-400;
+}
+
+.add-friends-button {
+  @apply mt-2 bg-custom-purple text-white rounded-lg p-2 w-full;
+}
+
+/* DisplayFriends */
+.friends-list-container {
+  @apply w-full md:w-1/4 flex flex-row md:flex-col overflow-x-auto md:overflow-visible md:space-x-0 md:space-y-3 items-center;
+  margin: 0;
+  padding: 0;
+}
+
+.friend-item {
+  @apply flex-shrink-0 relative;
+}
+
+.friend-item:not(:first-child) {
+  @apply -ml-3 md:ml-0;
+}
+
+.friend-image {
+  @apply w-16 h-16 rounded-full object-cover border border-custom-purple;
+}
+
+.friend-username-invisible {
+  @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 opacity-0 transition-opacity duration-300 ease-in-out text-sm rounded px-2 py-1 text-white text-base;
+}
+
+.friend-item:hover .friend-username-invisible {
+  @apply opacity-100 ;
+}
+
+.friend-image:hover {
+  @apply opacity-50;
+}
+
+/* Responsive */
 @media (max-width: 640px) {
   .friends-list-container {
     @apply ml-10;
