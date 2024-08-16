@@ -25,7 +25,9 @@ const Auth: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <div className="left-panel"></div>
+      <div className="left-panel">
+        <img src="/LogoSignup.svg" alt="Logo Vibezz blue V in shape of butterfly" className="logo" />
+      </div>
       <div className="right-panel">
         <h1 className="auth-title">Be a part of the vibrant vibezz community</h1>
         <h3 className="auth-subtitle">Join today.</h3>
@@ -33,10 +35,7 @@ const Auth: React.FC = () => {
         <div className="auth-buttons-container">
           <button
             onClick={openSignUp}
-            className={`
-              auth-button 
-              ${showSignUp ? 'auth-button-sign-up-active' : 'auth-button-sign-up-inactive'}
-            `}
+            className={`auth-button ${showSignUp ? 'auth-button-sign-up-active' : 'auth-button-sign-up-inactive'}`}
           >
             Sign Up
           </button>
@@ -51,10 +50,7 @@ const Auth: React.FC = () => {
 
           <button
             onClick={openSignIn}
-            className={`
-              auth-button 
-              ${showSignIn ? 'auth-button-sign-up-active' : 'auth-button-sign-up-inactive'}
-            `}
+            className={`auth-button ${showSignIn ? 'auth-button-sign-up-active' : 'auth-button-sign-up-inactive'}`}
           >
             Sign In
           </button>
@@ -63,10 +59,7 @@ const Auth: React.FC = () => {
 
       {showSignUp && (
         <div className="auth-popup">
-          <div
-            className="auth-popup-content"
-            style={{ transform: 'translateY(0)' }}
-          >
+          <div className="auth-popup-content">
             <button onClick={closePopUp} className="auth-popup-close">
               &times;
             </button>
@@ -77,10 +70,7 @@ const Auth: React.FC = () => {
 
       {showSignIn && (
         <div className="auth-popup">
-          <div
-            className="auth-popup-content"
-            style={{ transform: 'translateY(0)' }}
-          >
+          <div className="auth-popup-content">
             <button onClick={closePopUp} className="auth-popup-close">
               &times;
             </button>
