@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply h-full w-full;
+  background: radial-gradient(at center, #2E2B76 0%, #010607 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+input, textarea {
+  color: rgb(124, 124, 124);
+  background-color: white;
+}
+
+

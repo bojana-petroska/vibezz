@@ -1,0 +1,69 @@
+.profile-page-container {
+    @apply flex flex-col min-h-screen;
+  }
+  
+  .profile-content-container {
+    @apply flex flex-col md:flex-row min-h-screen;
+  }
+  
+  .profile-main-content {
+    @apply flex flex-col w-full md:w-2/4 p-4;
+  }
+  
+  .cover-photo-container {
+    @apply relative w-full mb-6;
+  }
+  
+  .cover-photo {
+    @apply w-full h-40 object-cover rounded-lg;
+  }
+  
+  .profile-picture {
+    @apply w-24 h-24 rounded-full object-cover border-0.5 border-white absolute left-1/2 transform -translate-x-1/2 -bottom-12;
+  }
+  
+  .profile-info-container {
+    @apply p-4 border border-custom-purple rounded-lg bg-transparent mt-16;
+  }
+  
+  .username {
+    @apply text-custom-purple text-xl;
+  }
+  
+  .status-message-container {
+    @apply flex flex-col mt-4;
+  }
+  
+  .status-message-input {
+    @apply p-2 rounded-lg border border-custom-purple;
+  }
+  
+  .status-message {
+    @apply text-white mt-2;
+  }
+  
+  .save-button {
+    @apply mt-2 bg-custom-purple text-white rounded-lg p-2;
+  }
+  
+  .edit-status-button {
+    @apply mt-2 text-custom-purple;
+  }
+  
+  .edit-profile-container {
+    @apply mt-4;
+  }
+  
+  .profile-input {
+    @apply p-2 mb-2 rounded-lg border border-custom-purple;
+  }
+  
+  .update-button {
+    @apply bg-custom-purple text-white rounded-lg p-2;
+  }
+  
+  .add-friends-container {
+    @apply w-full md:w-1/4 p-4;
+  }
+
+  

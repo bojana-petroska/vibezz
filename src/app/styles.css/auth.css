@@ -1,0 +1,98 @@
+.auth-container {
+  @apply flex min-h-screen;
+}
+
+.left-panel {
+  @apply w-1/2 flex items-center justify-center p-4;
+}
+
+.logo {
+  @apply w-1/2 h-auto;
+}
+
+.right-panel {
+  @apply w-1/2 flex flex-col justify-center items-start p-4 space-y-6;
+}
+
+.auth-title {
+  @apply text-4xl font-bold;
+}
+
+.auth-subtitle {
+  @apply text-xl;
+}
+
+.auth-buttons-container {
+  @apply flex flex-col space-y-4 w-full max-w-xs;
+}
+
+.auth-button {
+  @apply w-full py-3 rounded-full hover:bg-custom-purple hover:text-white focus:bg-custom-purple focus:text-white focus:outline-none;
+}
+
+.auth-button-sign-up-active {
+  @apply bg-custom-purple text-white;
+}
+
+.auth-button-sign-up-inactive {
+  @apply bg-transparent text-custom-purple border border-0.5 border-custom-purple;
+}
+
+.auth-divider {
+  @apply flex items-center space-x-2;
+}
+
+.auth-divider-line {
+  @apply flex-grow h-px bg-custom-purple;
+}
+
+.auth-divider-text {
+  @apply text-custom-purple;
+}
+
+.auth-signin-container {
+  @apply text-start;
+}
+
+.auth-popup {
+  @apply fixed inset-0 flex items-center justify-center z-50;
+}
+
+.auth-popup-content {
+  @apply bg-custom-radial rounded-2xl shadow-lg p-6 w-full max-w-md transform transition-transform duration-300 ease-in-out;
+}
+
+.auth-popup-close {
+  @apply absolute top-2 right-2 text-white text-2xl;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .auth-container {
+    @apply flex-col;
+  }
+
+  .left-panel {
+    @apply w-full flex items-center justify-center px-4;
+  }
+
+  .right-panel {
+    @apply w-full flex flex-col items-center px-10; 
+  }
+
+  .logo {
+    @apply w-24 pt-20; 
+  }
+
+  .auth-title {
+    @apply text-2xl text-center; 
+  }
+
+  .auth-subtitle {
+    @apply text-lg text-center; 
+  }
+
+  .auth-buttons-container {
+    @apply max-w-full flex flex-col items-center;
+  }
+}
